@@ -1,0 +1,2 @@
+旧URL,旧状态/自然流量,新URL,迁移方式(301/308/保留/410),内容是否同主题,旧页内链替换,负责人,上线测试结果,后续GSC状态
+https://old.example.com/guide,示例,https://new.example.com/guide,301,是,待核验,待分配,待测,待测

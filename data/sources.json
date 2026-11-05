@@ -1,0 +1,121 @@
+[
+  {
+    "id": "google-starter",
+    "title": "Google SEO Starter Guide",
+    "url": "https://developers.google.com/search/docs/fundamentals/seo-starter-guide",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "search-console",
+    "title": "Google Search Console 入门",
+    "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "helpful",
+    "title": "Google 以人为本的内容",
+    "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "spam",
+    "title": "Google Spam Policies",
+    "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "cwv",
+    "title": "Core Web Vitals",
+    "url": "https://developers.google.com/search/docs/appearance/core-web-vitals",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "canonical",
+    "title": "Canonical 规范网址",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "robots",
+    "title": "Robots.txt 官方说明",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "structured",
+    "title": "结构化数据介绍",
+    "url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "ai",
+    "title": "Google 生成式 AI 搜索优化说明（2026）",
+    "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "bing",
+    "title": "Bing URL Submission / IndexNow",
+    "url": "https://www.bing.com/webmasters/help/?topicid=62f2860b",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "hreflang",
+    "title": "本地化版本与 hreflang",
+    "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "sitemap",
+    "title": "Google Sitemap 指南",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "bing-ai-performance",
+    "title": "Bing Webmaster Tools: AI Performance",
+    "url": "https://www.bing.com/webmasters/help/ai-performance-9f8e7d6c",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "google-gai-performance",
+    "title": "Google Search Console 生成式 AI 表现报告（2026）",
+    "url": "https://support.google.com/webmasters/answer/16984139?hl=en",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "google-gai-announce",
+    "title": "Google Search Central: Generative AI Performance Reports（2026-06-03）",
+    "url": "https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "google-ai-controls",
+    "title": "Google 搜索生成式 AI 显示控制和网站洞察（2026）",
+    "url": "https://blog.google/products-and-platforms/products/search/new-controls-website-owners/",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  },
+  {
+    "id": "gsc-metrics",
+    "title": "Google Search Console 传统搜索效果指标口径",
+    "url": "https://support.google.com/webmasters/answer/7576553?hl=en",
+    "checked": "2026-11-05",
+    "kind": "官方文档"
+  }
+]

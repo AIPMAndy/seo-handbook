@@ -1,0 +1,27 @@
+name: verify
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build independent HTML pages
+        run: python3 scripts/build.py
+      - name: Static site SEO audit
+        run: python3 scripts/site_audit.py _site
+      - name: Unit and failure-injection tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Client-side JS logic tests
+        run: node tests/check_client.js
