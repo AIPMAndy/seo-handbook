@@ -6,9 +6,9 @@
 
 **作者：AI酋长 Andy** ｜ [个人网站](https://metaver.vip/) ｜ [开源主页](https://github.com/AIPMAndy)
 
-- 预定 GitHub 仓库：`https://github.com/AIPMAndy/seo-handbook`
-- 预定 GitHub Pages：`https://aipmandy.github.io/seo-handbook/`
-- **发布状态**：本项目源码与本地构建可独立运行；上面两个地址只有在真正创建仓库、推送并完成 Pages 部署后才可访问。不要把预定地址当作已上线。
+- GitHub 仓库：<https://github.com/AIPMAndy/seo-handbook>
+- GitHub Pages：<https://aipmandy.github.io/seo-handbook/>
+- **发布状态**：`main` 分支已上传完整源码；GitHub Actions 的 `verify` 和 `deploy` 均执行成功。部署成功不代表已完成第三方 HTTP 200 与手机浏览器交互验收，这两项仍待实测。
 
 ## 一眼看懂项目
 
@@ -32,8 +32,8 @@
 
 ### 方式 A：直接看离线网站
 
-1. 下载本项目 ZIP 并解压。
-2. 打开 `_site/index.html`，从第一章或 30 天计划开始。若浏览器限制 `file://` 的本地保存功能，请改用下方的本地静态服务器，确保进度正常保存。
+1. 下载项目发行 ZIP（内含 `_site/`）并解压；如果从 GitHub 下载源码 ZIP 或 `git clone`，先运行 `python3 scripts/build.py` 生成 `_site/`。
+2. 打开 `_site/index.html`，从第一章或 30 天计划开始.若浏览器限制 `file://` 的本地保存功能，请改用下方的本地静态服务器，确保进度正常保存。
 3. 勾选执行进度，工具箱可导出本地记录。
 
 ### 方式 B：本地运行并修改源码
@@ -140,6 +140,6 @@ seo-handbook/
 - 62 个公开静态页面，`scripts/site_audit.py` 检查结果：0 errors、0 warnings。
 - Python 24 项测试通过；Node 10 组核心客户端算法输入测试通过（本地）。
 - **浏览器端 V2 人机交互与手机视觉验收尚未完成**：当前执行环境阻止自动浏览器访问本地构建，需实际部署后人工验收。不能把 JS 单元测试当作移动端实测。
-- GitHub 远程仓库与 Pages 尚未创建/部署，不将预定 URL 作为已在线服务。
+- GitHub 源码已推送到 `main`；`verify` 与 `deploy` 工作流成功。在线 HTTP 200、移动端人工操作与真实搜索数据仍需持续验收。
 - ZIP 包含 SHA-256 文件清单；修改源代码或重新 build 后，请先重新测试再运行 `python3 scripts/verify_release.py --write` 更新发布清单。
 - 竞品功能对照、尚未完成的真实业务验证详见 [docs/benchmark.md](docs/benchmark.md)。

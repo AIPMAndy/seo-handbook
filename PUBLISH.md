@@ -1,6 +1,6 @@
 # 将 SEO Handbook 真正开源到 GitHub（发布操作单）
 
-> 默认仓库：`AIPMAndy/seo-handbook`。这是建议名称，直到 GitHub 创建成功前，远程地址只是预定地址。
+> 正式仓库：`AIPMAndy/seo-handbook`。源码已发布到 `main`，GitHub Actions 的 `verify` 与 `deploy` 工作流通过；本文后续部署步骤保留为维护和重新发布指南。
 
 ## A. 创建空仓库（网页方式）
 
