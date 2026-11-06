@@ -1,6 +1,21 @@
 (function(){'use strict';
 const prefix='seoHandbook2026:';const tryStorage={get(k){try{return localStorage.getItem(prefix+k)}catch(e){return null}},set(k,v){try{localStorage.setItem(prefix+k,v)}catch(e){}}};
 const byId=id=>document.getElementById(id);const all=sel=>Array.from(document.querySelectorAll(sel));
+// Copy the public WeChat ID only on explicit user action; no external trackers or QR generation.
+document.querySelectorAll('[data-copy-wechat]').forEach(button=>{
+  button.addEventListener('click',async()=>{
+    const id=button.dataset.wechat;
+    const feedback=button.parentElement?.querySelector('.copy-feedback');
+    try {
+      if(!navigator.clipboard?.writeText)throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(id);
+      if(feedback)feedback.textContent='已复制，在微信搜索即可添加';
+    }catch(error){
+      if(feedback)feedback.textContent='请长按选择并复制微信号：'+id;
+    }
+  });
+});
+
 function refresh(){const checks=all('[data-task]');checks.forEach(el=>{el.checked=tryStorage.get(el.dataset.task)==='1'});let done=checks.filter(el=>el.checked).length;let total=checks.length;const p=byId('currentProgress');if(p&&p.dataset.total){total=Number(p.dataset.total);done=0;try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k.startsWith(prefix)&&(k.slice(prefix.length).match(/^(lesson-\d{2}-\d+|day-\d{2})$/))&&localStorage.getItem(k)==='1')done++}}catch(e){}}if(byId('currentProgress'))byId('currentProgress').textContent=`${done} / ${total} 项`;if(byId('progressBar'))byId('progressBar').style.width=(total?done/total*100:0)+'%';all('[data-day]').forEach(x=>{x.classList.toggle('done',!!x.querySelector('input:checked'))});}
 all('[data-task]').forEach(el=>el.addEventListener('change',()=>{tryStorage.set(el.dataset.task,el.checked?'1':'0');refresh()}));refresh();
 const q=byId('courseSearch');let stage='全部';function filter(){const needle=(q?.value||'').trim().toLocaleLowerCase();let visible=0;all('[data-course]').forEach(x=>{const hitStage=stage==='全部'||x.dataset.stage===stage;const hitWord=(x.dataset.search||'').toLocaleLowerCase().includes(needle);x.classList.toggle('hidden',!(hitStage&&hitWord));if(hitStage&&hitWord)visible++});if(byId('filterCount'))byId('filterCount').textContent=visible+' 章';}

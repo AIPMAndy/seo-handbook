@@ -8,6 +8,7 @@
 
 - GitHub 仓库：<https://github.com/AIPMAndy/seo-handbook>
 - GitHub Pages：<https://aipmandy.github.io/seo-handbook/>
+- **联系作者**：[AI 酋长 Andy 个人官网](https://metaver.vip/) · [咨询服务](https://metaver.vip/services) · **个人微信 `AIPMAndy`**（在微信搜索添加，网站支持一键复制）
 - **发布状态**：`main` 分支已上传完整源码；GitHub Actions 的 `verify` 和 `deploy` 均执行成功。部署成功不代表已完成第三方 HTTP 200 与手机浏览器交互验收，这两项仍待实测。
 
 ## 一眼看懂项目
@@ -16,7 +17,7 @@
 |---|---|---|
 | 课程 | **41 章、164 条课程动作**，每条都有操作、完成标准、卡住怎么办 | 每章独立 HTML，且可直接访问 |
 | 行动 | **30 天逐日计划**，每一天关联具体章节、凭证 | `plan.html` 勾选与持久化 |
-| SEO 可发现性 | **62 个独立静态 HTML**、各页 title/description/H1/canonical/JSON-LD、sitemap | `python3 scripts/site_audit.py _site` |
+| SEO 可发现性 | **63 个独立静态 HTML**、各页 title/description/H1/canonical/JSON-LD、sitemap | `python3 scripts/site_audit.py _site` |
 | 工具箱 | 选题优先级、收入情景模拟、搜索摘要预览、本地进度导出/导入 | `tools.html` 手工交互 |
 | 路线选择 | 6 类起点，42 个逐日任务，有完成凭证、对应章节与 30/90 天目标 | `routes.html` |
 | SOP | **13 套深度操作指引，65 个实操步骤**，含失败回退 | `sops.html` 和 `sops/*.html` |
@@ -137,7 +138,7 @@ seo-handbook/
 
 ## 工具验收快照（2026-11-05）
 
-- 62 个公开静态页面，`scripts/site_audit.py` 检查结果：0 errors、0 warnings。
+- 63 个公开静态页面，`scripts/site_audit.py` 检查结果：0 errors、0 warnings。
 - Python 24 项测试通过；Node 10 组核心客户端算法输入测试通过（本地）。
 - **浏览器端 V2 人机交互与手机视觉验收尚未完成**：当前执行环境阻止自动浏览器访问本地构建，需实际部署后人工验收。不能把 JS 单元测试当作移动端实测。
 - GitHub 源码已推送到 `main`；`verify` 与 `deploy` 工作流成功。在线 HTTP 200、移动端人工操作与真实搜索数据仍需持续验收。

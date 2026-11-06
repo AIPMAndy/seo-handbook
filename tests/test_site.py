@@ -34,6 +34,30 @@ class TestCurriculum(unittest.TestCase):
         page=(ROOT/'_site/plan.html').read_text(encoding='utf-8')
         self.assertEqual(page.count('data-day>'),30)
         self.assertEqual(page.count('data-task="day-'),30)
+    def test_author_contact_and_website_are_visible_on_all_pages(self):
+        pages=list((ROOT/'_site').rglob('*.html'))
+        self.assertEqual(len(pages),63)
+        for p in pages:
+            content=p.read_text(encoding='utf-8')
+            with self.subTest(page=str(p.relative_to(ROOT))):
+                self.assertIn('https://metaver.vip/',content)
+                self.assertIn('https://metaver.vip/services',content)
+                self.assertIn('AIPMAndy',content)
+                self.assertIn('data-copy-wechat',content)
+                self.assertIn('个人微信：',content)
+                contact='href="../contact.html"' if p.parent.name in ('lessons','sops') else 'href="contact.html"'
+                self.assertIn(contact,content)
+    def test_contact_page_is_discoverable(self):
+        contact=(ROOT/'_site/contact.html').read_text(encoding='utf-8')
+        self.assertIn('<h1>联系 AI 酋长 Andy</h1>',contact)
+        self.assertIn('data-wechat="AIPMAndy"',contact)
+        sitemap=(ROOT/'_site/sitemap.xml').read_text(encoding='utf-8')
+        self.assertIn('https://aipmandy.github.io/seo-handbook/contact.html',sitemap)
+    def test_homepage_author_ad_is_prominent(self):
+        page=(ROOT/'_site/index.html').read_text(encoding='utf-8')
+        self.assertLess(page.index('id="meet-andy"'),page.index('id="courses"'))
+        self.assertIn('添加个人微信 · AIPMAndy',page)
+
     def test_no_misleading_robots(self):
         self.assertFalse((ROOT/'_site/robots.txt').exists())
 
@@ -53,7 +77,7 @@ class TestAuditFailures(unittest.TestCase):
     def test_clean_site(self):
         errors,warnings,count=audit(self.site)
         self.assertEqual(errors,[])
-        self.assertEqual(count,62)
+        self.assertEqual(count,63)
     def test_missing_page_found(self):
         dest=self.site/'plan.html'
         dest.unlink()
