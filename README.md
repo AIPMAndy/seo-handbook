@@ -144,3 +144,21 @@ seo-handbook/
 - GitHub 源码已推送到 `main`；`verify` 与 `deploy` 工作流成功。在线 HTTP 200、移动端人工操作与真实搜索数据仍需持续验收。
 - ZIP 包含 SHA-256 文件清单；修改源代码或重新 build 后，请先重新测试再运行 `python3 scripts/verify_release.py --write` 更新发布清单。
 - 竞品功能对照、尚未完成的真实业务验证详见 [docs/benchmark.md](docs/benchmark.md)。
+
+## 📘 完整 PDF · 同源生成
+
+[在线下载 PDF](https://aipmandy.github.io/seo-handbook/pdf/seo-handbook-guide.pdf)（以 Pages 部署及在线 SHA 验收成功为准）。
+
+PDF 由 `data/chapters.json`、`data/sops.json`、`data/routes.json`、`data/sources.json` 生成，包含 41 章、13 套 SOP、6 条路线，目录与官方引用链接可点击。封面和联系区含微信 **AIPMAndy**、[个人官网](https://metaver.vip/)、[公司官网](https://www.a6no1.cn/) 及 [服务入口](https://metaver.vip/services)。模拟案例均按教学场景处理；官方资料保留原始核验日期，不冒充实时复核。
+
+可复现命令（网站仍使用原来无依赖的构建链）：
+
+```bash
+python3 -m pip install weasyprint==68.0 pymupdf==1.26.7 pillow==11.3.0
+# 机器需有 Noto Sans CJK SC 字体：Ubuntu 可安装 fonts-noto-cjk
+python3 scripts/build.py
+python3 scripts/build_pdf.py --output _site/pdf/seo-handbook-guide.pdf
+python3 scripts/pdf_quality_gate.py _site/pdf/seo-handbook-guide.pdf --qa-dir qa/pdf
+```
+
+GitHub Actions 中先构建，再检查文字/每章标题/链接/所有页面边界并逐页渲染，成功后才入库和部署；发布后通过真实线上 PDF SHA-256 比对。自动渲染总览 **不等于** 人工高清逐页签字、Safari/iOS 或 Android 真机验收。

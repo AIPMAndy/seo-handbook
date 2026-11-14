@@ -42,6 +42,8 @@ class TestCurriculum(unittest.TestCase):
             with self.subTest(page=str(p.relative_to(ROOT))):
                 self.assertIn('https://metaver.vip/',content)
                 self.assertIn('https://metaver.vip/services',content)
+                self.assertIn('https://www.a6no1.cn/',content)
+                self.assertIn('seo-handbook-guide.pdf',content)
                 self.assertIn('AIPMAndy',content)
                 self.assertIn('data-copy-wechat',content)
                 self.assertIn('个人微信：',content)

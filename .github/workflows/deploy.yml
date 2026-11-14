@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -24,10 +24,40 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Build
+      - name: Install PDF engine and Chinese fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk
+          python3 -m pip install --disable-pip-version-check 'weasyprint==68.0' 'pymupdf==1.26.7' 'pillow==11.3.0'
+      - name: Build website from source
         env:
           SITE_URL: https://aipmandy.github.io/seo-handbook/
         run: python3 scripts/build.py
+      - name: Build searchable PDF from original JSON
+        run: |
+          python3 scripts/build_pdf.py --output _site/pdf/seo-handbook-guide.pdf
+          python3 scripts/pdf_quality_gate.py _site/pdf/seo-handbook-guide.pdf --qa-dir qa/pdf
+      - name: Keep PDF and visual QA as CI artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-handbook-pdf-and-full-page-qa
+          path: |
+            _site/pdf/seo-handbook-guide.pdf
+            qa/pdf/
+          retention-days: 30
+      - name: Publish verified PDF into repository (no force)
+        run: |
+          mkdir -p pdf
+          cp _site/pdf/seo-handbook-guide.pdf pdf/seo-handbook-guide.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pdf/seo-handbook-guide.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "docs(pdf): publish verified SEO handbook edition"
+            git push origin HEAD:main
+          else
+            echo "Repository PDF already matches current source"
+          fi
       - name: Audit
         run: |
           python3 scripts/site_audit.py _site
@@ -39,3 +69,5 @@ jobs:
           path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Confirm real Pages and PDF bytes
+        run: python3 scripts/check_live_pdf.py _site/pdf/seo-handbook-guide.pdf
